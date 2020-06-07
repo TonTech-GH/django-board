@@ -5,6 +5,11 @@
   <img class="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
   <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
 
+  <!-- エラーがある時の表示 -->
+  {% if error %}
+  {{ error }}
+  {% endif %}
+
   <!-- nameタグでモデルの要素名に対応付けられる -->
   <label for="inputEmail" class="sr-only">User Name</label>      
   <input type="text" id="inputEmail" class="form-control" name="username" placeholder="Username" required autofocus>
