@@ -130,3 +130,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # 保存した画像にアクセスするためのURL
 MEDIA_URL = '/medi/'
 
+# 非ログイン時にこのURLに遷移させる
+LOGIN_URL = 'login'

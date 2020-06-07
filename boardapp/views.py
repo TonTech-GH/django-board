@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from . import models
 
 def signupfunc(request):
@@ -13,6 +14,10 @@ def signupfunc(request):
         try:
             # ユーザー名の重複確認
             User.objects.get(username=username)
+            print('****** objects type *****')
+            print(type(User.objects))
+            print('*************************')
+
             return render(request, 'signup.html', {'error': 'このユーザーは登録されています'})
         except:
             # 重複がなかったのでDBに登録する
@@ -36,15 +41,24 @@ def loginfunc(request):
         if user is not None:
             # ログインセッション生成
             login(request, user)
-            return redirect('signup')
+            return redirect('list')
         else:
             return render(request, 'login.html', {'error': 'ログインに失敗しました'})
 
     return render(request, 'login.html')
 
+@login_required
 def listfunc(request):
     '''
     記事のリスト表示画面
     '''
     object_list = models.BoardModel.objects.all()
     return render(request, 'list.html', {'objects': object_list})
+
+def logoutfunc(request):
+    '''
+    ログアウト
+    '''
+    logout(request)
+    return redirect('login')
+
