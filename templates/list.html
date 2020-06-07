@@ -12,13 +12,13 @@
 <!-- メイン表示 -->
 {% block content %}
 <div class="container">
+    {% for item in objects %}
     <div class="alert alert-success" role="alert">
-        <p>タイトル: </p>
-        <p>投稿者: </p>
+        <p>タイトル: {{ item.title }}</p>
+        <p>投稿者: {{ item.author }}</p>
         <a href="#" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Like</a>
         <a href="#" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">読んだよ</a>
     </div>
+    {% endfor %}
 </div>
-{% for item in objects %}
-{% endfor %}
 {% endblock content %}

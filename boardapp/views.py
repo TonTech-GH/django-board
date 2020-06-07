@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from . import models
 
 def signupfunc(request):
     '''
@@ -45,4 +46,5 @@ def listfunc(request):
     '''
     記事のリスト表示画面
     '''
-    return render(request, 'list.html', {})
+    object_list = models.BoardModel.objects.all()
+    return render(request, 'list.html', {'objects': object_list})
