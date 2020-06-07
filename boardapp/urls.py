@@ -7,4 +7,4 @@ urlpatterns = [
     path('signup/', views.signupfunc, name='signup'),
     path('login/' , views.loginfunc , name='login' ),
     path('list/'  , views.listfunc  , name='list'  ),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
