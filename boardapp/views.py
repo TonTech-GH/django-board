@@ -40,3 +40,9 @@ def loginfunc(request):
             return render(request, 'login.html', {'error': 'ログインに失敗しました'})
 
     return render(request, 'login.html')
+
+def listfunc(request):
+    '''
+    記事のリスト表示画面
+    '''
+    return render(request, 'list.html', {})

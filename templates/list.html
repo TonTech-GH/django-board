@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+<!-- CSSの設定 -->
+{% block customcss %}
+{% endblock customcss %}
+
+<!-- ヘッダー -->
+{% block header %}
+<div class="alert alert-primary" role="alert">社内SNS</div>
+{% endblock header %}
+
+<!-- メイン表示 -->
+{% block content %}
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        <p>タイトル: </p>
+        <p>投稿者: </p>
+        <a href="#" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Like</a>
+        <a href="#" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">読んだよ</a>
+    </div>
+</div>
+{% for item in objects %}
+{% endfor %}
+{% endblock content %}
