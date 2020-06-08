@@ -13,6 +13,7 @@
 <!-- メイン表示 -->
 {% block content %}
 <div class="container">
+    <a href="{% url 'create' %}">新規投稿</a>
     {% for item in objects %}
     <div class="alert alert-success" role="alert">
         <p>タイトル: <a href="{% url 'detail' item.pk %}">{{ item.title }}</a></p>

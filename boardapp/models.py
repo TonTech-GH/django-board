@@ -9,6 +9,7 @@ class BoardModel(models.Model):
     #  - upload_to='' とするとsettingsで指定されたデフォルトのディレクトリ直下に画像が保存される
     images = models.ImageField(upload_to='')
 
-    like = models.IntegerField()
-    read = models.IntegerField()
-    read_list = models.CharField(max_length=200)
+    like = models.IntegerField(null=True, blank=True, default=0)
+    read = models.IntegerField(null=True, blank=True, default=0)
+    read_list = models.CharField(max_length=200, null=True, blank=True, default='')
+    
