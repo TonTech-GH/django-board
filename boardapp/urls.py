@@ -9,4 +9,6 @@ urlpatterns = [
     path('list/', views.listfunc, name='list'),
     path('logout/', views.logoutfunc, name='logout'),
     path('detail/<int:pk>', views.detailfunc, name='detail'),
+    path('like/<int:pk>', views.likefunc, name='like'),
+    path('read/<int:pk>', views.readfunc, name='read'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

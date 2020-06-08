@@ -53,7 +53,7 @@ def listfunc(request):
     記事のリスト表示画面
     '''
     object_list = models.BoardModel.objects.all()
-    return render(request, 'list.html', {'objects': object_list})
+    return render(request, 'list.html', {'objects': object_list, 'username':request.user.get_username()})
 
 def logoutfunc(request):
     '''
@@ -68,4 +68,31 @@ def detailfunc(request, pk):
     記事の詳細表示
     '''
     obj = models.BoardModel.objects.get(pk=pk)
-    return render(request, 'detail.html', {'obj':obj})
+    return render(request, 'detail.html', {'obj':obj, 'username':request.user.get_username()})
+
+@login_required
+def likefunc(request, pk):
+    '''
+    いいね機能
+    '''
+    obj = models.BoardModel.objects.get(pk=pk)
+    obj.like += 1
+    obj.save()
+    return redirect('detail', pk)
+
+@login_required
+def readfunc(request, pk):
+    '''
+    既読機能
+    '''
+    obj = models.BoardModel.objects.get(pk=pk)
+    reader = request.user.get_username()
+
+    if reader in obj.read_list:
+        return redirect('list')
+    
+    obj.read += 1
+    obj.read_list += ', {}'.format(reader)
+    obj.save()
+    return redirect('list')
+

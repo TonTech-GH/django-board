@@ -6,6 +6,7 @@
 
 <!-- ヘッダー -->
 {% block header %}
+ログイン中: {{ username }}
 <div class="alert alert-primary" role="alert">投稿詳細</div>
 {% endblock header %}
 
@@ -17,8 +18,8 @@
         <p>投稿者: {{ obj.author }}</p>
         <p>本文: {{ obj.content }}</p>
         <p><img src="{{ obj.images.url}}" width="200"></p>
-        <a href="#" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Like</a>
-        <a href="#" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">読んだよ</a>
+        <a href="{% url 'like' obj.pk %}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Like {{ obj.like }}</a>
+        <a href="{% url 'read' obj.pk %}" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">読んだよ {{ obj.read }}</a>
     </div>
 </div>
 {% endblock content %}
