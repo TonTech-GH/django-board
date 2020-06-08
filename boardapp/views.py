@@ -62,3 +62,10 @@ def logoutfunc(request):
     logout(request)
     return redirect('login')
 
+@login_required
+def detailfunc(request, pk):
+    '''
+    記事の詳細表示
+    '''
+    obj = models.BoardModel.objects.get(pk=pk)
+    return render(request, 'detail.html', {'obj':obj})
